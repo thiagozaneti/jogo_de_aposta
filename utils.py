@@ -2,7 +2,7 @@ import random
 
 select_types = ["A","B","C","D","E","F","."]
 def random_slot():
-    weights = [2, 1, 1, 1, 0.5, 0.5, 0.2 ]
+    weights = [2, 1, 1, 1, 0.5, 0.5, 0.1 ]
     random.shuffle(weights)
     return random.choices(select_types, weights=weights)[0]
 
@@ -40,6 +40,6 @@ def verificar_condicao(layout_grid, usuario):
     ganhou_linhas = verificar_linhas(layout_grid, usuario)
     ganhou_diagonais = verificar_diagonais(layout_grid, usuario)
 
-    if not ganhou_linhas and not ganhou_diagonais:
+    if not ganhou_linhas or not ganhou_diagonais:
         print("perdeu")
         usuario.subtracao_de_saldo(1.25)
