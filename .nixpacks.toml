@@ -1,20 +1,17 @@
-[phases.start]
-commands = ["flask run --host=0.0.0.0 --port=8000"]
-
 [phases.setup]
-# Comandos que devem ser executados na fase de setup
 commands = [
-  "pip install -r requirements.txt"
+  "pip install --upgrade pip"
 ]
 
 [phases.install]
-# Especifica como instalar as dependências
 commands = [
   "pip install -r requirements.txt"
 ]
 
+[phases.start]
+commands = [
+  "python app.py"  # Substitua "app.py" pelo nome do arquivo principal se for diferente
+]
 
-# Especificando o ambiente da aplicação
 [environment]
-PYTHON_VERSION = "3.12.3" # Define a versão do Python que será usada
-PORT = "8000" # Define a porta em que o servidor vai rodar
+PYTHON_VERSION = "3.10"
