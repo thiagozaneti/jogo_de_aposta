@@ -1,0 +1,17 @@
+[phases.setup]
+# Comandos que devem ser executados na fase de setup
+commands = [
+  "pip install --upgrade pip" # Atualizar o pip, por exemplo
+]
+
+[phases.install]
+# Especifica como instalar as dependências
+commands = [
+  "pip install -r requirements.txt"
+]
+
+
+# Especificando o ambiente da aplicação
+[environment]
+PYTHON_VERSION = "3.12.3" # Define a versão do Python que será usada
+PORT = "8000" # Define a porta em que o servidor vai rodar
