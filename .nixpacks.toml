@@ -1,7 +1,7 @@
 [phases.setup]
 # Comandos que devem ser executados na fase de setup
 commands = [
-  "pip install --upgrade pip" # Atualizar o pip, por exemplo
+  "pip install -r requirements.txt"
 ]
 
 [phases.install]
