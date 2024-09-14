@@ -1,5 +1,6 @@
 from utils import random_slot, verificar_condicao
 from models.models import User, Betting_House
+import time
 
 
 class Roleta:
@@ -9,6 +10,7 @@ class Roleta:
 
     def rolar_roleta(self, rodadas):
         for c in range(rodadas):
+            tempo_inicial = time.time
             print(f"Rodada {c + 1} de {rodadas}")
             self.usuario.subtracao_de_saldo(self.casa.banca_casa)
             self.layout_grid = [
@@ -21,6 +23,8 @@ class Roleta:
             verificar_condicao(self.layout_grid, self.usuario)
             if self.usuario.saldo < self.casa.saldo_negativo:
                 break
+            tempo_final = time.time
+            print(tempo_inicial, tempo_final)
         self.usuario.atualizar_usuario_bd()
         self.usuario.mostrar_saldo()
         self.casa.saldo_casa()

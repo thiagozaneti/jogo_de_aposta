@@ -8,7 +8,7 @@ def create_app():
     app.register_blueprint(roulette_bp)
     app.config.from_object(Config)
     db.init_app(app)
-    return app  # Retorna o app criado
+    return app 
 
 if __name__ == "__main__":
     app = create_app()

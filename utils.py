@@ -1,10 +1,15 @@
 import random
 
+
+
+
+##seleçaõ de tipos da roleta
 select_types = ["A","B","C","D","E","F","."]
 def random_slot():
     weights = [2, 1, 1, 1, 0.5, 0.5, 0.1 ]
     random.shuffle(weights)
     return random.choices(select_types, weights=weights)[0]
+##essa função random slot junta uma lista de pesos com o select_types
 
 def random_earnings():
     earnings = random.uniform(1.0, 1.19)

@@ -7,7 +7,7 @@ roulette_bp = Blueprint('roulette', __name__)
 
 @roulette_bp.route("/roleta/play/<usuario>", methods=["POST"])
 def play_roulette(usuario):
-    user_data = request.json
+    user_data = request.get_json()
     if not user_data or 'rodadas' not in user_data:
         return jsonify({"error": "Dados inválidos ou incompletos"}), 400
 
@@ -29,6 +29,8 @@ def play_roulette(usuario):
         "ganhos": user.ganhos,
         "derrotas": user.derrotas
     })
+
+
 
 @roulette_bp.route("/roleta/register/cadastro", methods=["POST"])
 def register_cadastro():
