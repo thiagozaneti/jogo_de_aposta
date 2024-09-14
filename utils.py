@@ -1,9 +1,6 @@
 import random
 
-
-
-
-##seleçaõ de tipos da roleta
+##seleção de tipos da roleta
 select_types = ["A","B","C","D","E","F","."]
 def random_slot():
     weights = [2, 1, 1, 1, 0.5, 0.5, 0.1 ]
@@ -11,10 +8,13 @@ def random_slot():
     return random.choices(select_types, weights=weights)[0]
 ##essa função random slot junta uma lista de pesos com o select_types
 
+
+##função random_earnings - randomiza os ganhos do usuario se ele ganhar na diagonal
 def random_earnings():
     earnings = random.uniform(1.0, 1.19)
     return earnings
 
+##funcao de verificação de linhas - verifica se o usuario ganhou em linhas e colunas em sequencia
 def verificar_linhas(layout_grid, usuario):
     ganhou = False
     for i in range(3):
@@ -28,7 +28,7 @@ def verificar_linhas(layout_grid, usuario):
             ganhou = True
     return ganhou
 
-
+##funcao de verificacao de diagonais
 def verificar_diagonais(layout_grid, usuario):
     ganhou = False
     if layout_grid[0][0] == layout_grid[1][1] == layout_grid[2][2]:
