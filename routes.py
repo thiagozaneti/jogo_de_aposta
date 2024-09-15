@@ -3,7 +3,9 @@ from services.roullete_logic import Roleta
 from models.models import User, Betting_House
 from models.database_models import Usuario, db
 
+
 roulette_bp = Blueprint('roulette', __name__)
+ 
 
 @roulette_bp.route("/roleta/play/<usuario>", methods=["POST"])
 def play_roulette(usuario):
@@ -32,7 +34,7 @@ def play_roulette(usuario):
 
 
 
-@roulette_bp.route("/roleta/register/cadastro", methods=["POST"])
+@roulette_bp.route("/roleta/register", methods=["POST"])
 def register_cadastro():
     data = request.get_json()
     username = data.get("username")
@@ -46,7 +48,7 @@ def register_cadastro():
     if usuario_existente:
         return jsonify({"erro": "usuário já existente"}), 409
 
-    new_user = Usuario(id = 2, username=username, email=email, senha=senha, saldo = 0.0)
+    new_user = Usuario(id = 3, username=username, email=email, senha=senha, saldo = 0.0)
     db.session.add(new_user)
     db.session.commit()
     

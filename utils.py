@@ -1,5 +1,7 @@
 import random
 
+SUBTRACAO_DE_SALD0 = 1.25
+
 ##seleção de tipos da roleta
 select_types = ["A","B","C","D","E","F","."]
 def random_slot():
@@ -41,10 +43,12 @@ def verificar_diagonais(layout_grid, usuario):
         ganhou = True
     return ganhou
 
+
+##funcao que verifica todas as condições e aplica a regra na classe de usuario
 def verificar_condicao(layout_grid, usuario):
     ganhou_linhas = verificar_linhas(layout_grid, usuario)
     ganhou_diagonais = verificar_diagonais(layout_grid, usuario)
 
     if not ganhou_linhas or not ganhou_diagonais:
         print("perdeu")
-        usuario.subtracao_de_saldo(1.25)
+        usuario.subtracao_de_saldo(SUBTRACAO_DE_SALD0)
