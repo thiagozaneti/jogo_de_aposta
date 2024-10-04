@@ -1,8 +1,3 @@
-from flask import Blueprint
-
-user_bp = Blueprint('user', __name__)
-
-roulette_bp = Blueprint('roulette', __name__)
-
-from .user_routes import *
-from .roulette_routes import *
+from .user_routes import user_bp
+from .roulette_routes import roulette_bp
+from .bet_routes import bet_bp

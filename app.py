@@ -1,6 +1,7 @@
 from flask import Flask
 from routes.roulette_routes import roulette_bp
 from routes.user_routes import user_bp
+from routes.bet_routes import bet_bp
 from config.config_bd import Config
 from models.database_models import db
 
@@ -14,6 +15,7 @@ def create_app():
     app = Flask(__name__)
     app.register_blueprint(roulette_bp,url_prefix="/roleta", name= "roulette")
     app.register_blueprint(user_bp, url_prefix="/user", name="user")
+    app.register_blueprint(bet_bp, url_prefix="/bet", name="bet")
     app.config.from_object(Config)
     db.init_app(app)
     return app 
@@ -25,4 +27,5 @@ if __name__ == "__main__":
     #     for rule in app.url_map.iter_rules():
     #         print(f"Endpoint: {rule.endpoint}, Route: {rule}")
     app.run(host="0.0.0.0", debug=True, port=8000)
+
 

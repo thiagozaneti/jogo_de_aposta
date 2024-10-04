@@ -19,8 +19,9 @@ class Roleta:
             [random_slot(), random_slot(), random_slot()],
             ]
             for row in self.layout_grid:
+                jogada = 0
                 self.usuario.layout_grid.append(row)
-                print(" |".join(map(str, row)))
+            print(" |".join(map(str, row)))
             verificar_condicao(self.layout_grid, self.usuario)
             if self.usuario.saldo < self.casa.saldo_negativo:
                 break

@@ -5,7 +5,7 @@ from models.database_models import Usuario, db
 
 roulette_bp = Blueprint('roulette', __name__)
  
-@roulette_bp.route("/roleta/play/<usuario>", methods=["POST"])
+@roulette_bp.route("/play/<usuario>", methods=["POST"])
 def play_roulette(usuario):
     """
     End-point para jogar a roleta.
@@ -32,7 +32,7 @@ def play_roulette(usuario):
         return jsonify({"error": "Saldo insuficiente para jogar a roleta"}), 400
 
     # Cria uma instância da classe Betting_House
-    casa = Betting_House(saldo=1000)
+    casa = Betting_House(saldo=10000)
 
     # Cria uma instância da classe User
     user = User(user_db_instance=user_db, rodadas=user_data['rodadas'], betting_house=casa)
@@ -45,11 +45,15 @@ def play_roulette(usuario):
 
     # Retorna os dados do usuário atualizados
     return jsonify({
-        "rodadas": user.rodadas,
-        "saldo_final": user.saldo,
-        "ganhos": user.ganhos,
-        "derrotas": user.derrotas,
-        "layout_grid":user.layout_grid
-    })
+    "user": {
+        "username": user_db.username, 
+        "grid": {
+            "layout_grid": user.layout_grid if not callable(user.layout_grid) else None
+        },
+        "ganhos": float(user.ganhos),  # Converte para float caso seja um tipo numérico complexo
+        "derrotas": int(user.derrotas),  # Garante que derrotas seja um valor numérico simples
+        "saldo_final": float(user.saldo)  # Converte saldo para float
+    }
+})
 
 

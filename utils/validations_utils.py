@@ -1,20 +1,19 @@
 import random
+from random_earnings import random_earnings
 
 SUBTRACAO_DE_SALD0 = 1.25
 
 ##seleção de tipos da roleta
 select_types = ["A","B","C","D","E","F","."]
 def random_slot():
-    weights = [2, 1, 1, 1, 0.5, 0.5, 0.1 ]
+    weights = [0.1, 1, 1, 1, 0.5, 0.5, 0.1 ]
     random.shuffle(weights)
     return random.choices(select_types, weights=weights)[0]
 ##essa função random slot junta uma lista de pesos com o select_types
 
 
 ##função random_earnings - randomiza os ganhos do usuario se ele ganhar na diagonal
-def random_earnings():
-    earnings = random.uniform(1.0, 1.19)
-    return earnings
+
 
 ##funcao de verificação de linhas - verifica se o usuario ganhou em linhas e colunas em sequencia
 def verificar_linhas(layout_grid, usuario):
