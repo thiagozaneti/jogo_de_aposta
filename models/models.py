@@ -19,8 +19,8 @@ class User:
         self.ganhos = int()
         self.derrotas = int()
         self.rodadas = int(rodadas)
-        self.betting_house = betting_house
-        
+        self.betting_house = betting_house  
+        self.layout_grid = []      
 
     def adicao_de_saldo(self, adicao_slot):
         soma_total_saldo = self.saldo + adicao_slot
@@ -49,3 +49,7 @@ class User:
     def atualizar_usuario_bd(self):
         self.user_db_instance.saldo = self.saldo
         db.session.commit()
+
+    def add_saldo(self, saldo):
+        self.saldo += saldo
+        

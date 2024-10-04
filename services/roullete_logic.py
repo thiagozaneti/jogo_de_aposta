@@ -1,4 +1,4 @@
-from utils import random_slot, verificar_condicao
+from utils.validations_utils import random_slot, verificar_condicao
 from models.models import User, Betting_House
 import time
 
@@ -19,6 +19,7 @@ class Roleta:
             [random_slot(), random_slot(), random_slot()],
             ]
             for row in self.layout_grid:
+                self.usuario.layout_grid.append(row)
                 print(" |".join(map(str, row)))
             verificar_condicao(self.layout_grid, self.usuario)
             if self.usuario.saldo < self.casa.saldo_negativo:
@@ -30,5 +31,4 @@ class Roleta:
         self.casa.saldo_casa()
         
         
-
 
